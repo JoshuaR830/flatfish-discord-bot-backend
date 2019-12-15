@@ -17,7 +17,6 @@ app.get("/check-pending", (req, res) => {
     let fetchData = {
         method: 'POST',
         body: data,
-        headers: new Headers()
     }
     // fetch('http://www.flatfish.online:49162/check-pending', {method: 'POST', body: 'hasPendingVersion=true'});
     fetch('http://www.flatfish.online:49162/check-pending', fetchData);
