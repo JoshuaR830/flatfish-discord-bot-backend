@@ -7,7 +7,11 @@ const app = express()
 var messageChannel;
 
 app.get("/check-pending", (req, res) => {
-    fetch('http://www.flatfish.online:49162/check-pending');
+
+    var body = {}
+    fetch('http://www.flatfish.online:49162/check-pending', {method: 'POST', body: '{"hasPendingVersion":"true"}'})
+
+    // fetch('http://www.flatfish.online:49162/check-pending');
     res.status(200).send("Sent message to discord");
 })
 
