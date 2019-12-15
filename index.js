@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 // const shell = require('shelljs');
 const fetch = require('node-fetch');
@@ -8,12 +9,22 @@ var messageChannel;
 
 app.get("/check-pending", (req, res) => {
 
+    let data = {
+        hasPendingVersion: true,
+        token: process.env.CONFIRM_TOKEN
+    }
+
+    let fetchData = {
+        method: 'POST',
+        body: data,
+        headers: new Headers()
+    }
     // fetch('http://www.flatfish.online:49162/check-pending', {method: 'POST', body: 'hasPendingVersion=true'});
-    fetch('http://www.flatfish.online:49162/check-pending', {method: 'POST', body: '{"hasPendingVersion":"true"}'});
+    fetch('http://www.flatfish.online:49162/check-pending', fetchData);
 
 
     // fetch('http://www.flatfish.online:49162/check-pending');
-    res.status(200).send("Sent message to discord");
+    res.status(200).send("Post request: sent message to discord");
 })
 
 app.get("/set-pending", (req, res) => {

@@ -1,5 +1,5 @@
 {
-  "name": "dotenv",
+  "name": "bot-backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,8 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "node-fetch": "^2.6.0"
   }
 }
