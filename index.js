@@ -12,7 +12,9 @@ app.get("/check-pending", (req, res) => {
     let payload = {
         hasPendingVersion: true,
         token: process.env.CONFIRM_TOKEN
-    });
+    };
+
+    console.log(payload);
 
     let data = new FormData();
     data.append("json", JSON.stringify(payload))
