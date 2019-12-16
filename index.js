@@ -9,11 +9,14 @@ var messageChannel;
 
 app.get("/check-pending", (req, res) => {
 
-    console.log("hi");
-    let data = JSON.stringify({
+    let payload = {
         hasPendingVersion: true,
         token: process.env.CONFIRM_TOKEN
     });
+
+    let data = new FormData();
+    data.append("json", JSON.stringify(payload))
+    
 
     let fetchData = {
         method: 'POST',
