@@ -9,15 +9,19 @@ var messageChannel;
 
 app.get("/check-pending", (req, res) => {
 
-    let data = {
+    console.log("hi");
+    let data = JSON.stringify({
         hasPendingVersion: true,
         token: process.env.CONFIRM_TOKEN
-    }
+    });
 
     let fetchData = {
         method: 'POST',
         body: data,
-    }
+    };
+
+    console.log(fetchData);
+
     // fetch('http://www.flatfish.online:49162/check-pending', {method: 'POST', body: 'hasPendingVersion=true'});
     fetch('http://www.flatfish.online:49162/check-pending', fetchData);
 
