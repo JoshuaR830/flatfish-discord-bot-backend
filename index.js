@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 // const shell = require('shelljs');
 const fetch = require('node-fetch');
+const request = require('request');
 
 const app = express()
 
@@ -9,26 +10,41 @@ var messageChannel;
 
 app.get("/check-pending", (req, res) => {
 
-    let payload = {
-        hasPendingVersion: true,
-        token: process.env.CONFIRM_TOKEN
-    };
+    // let payload = {
+    //     hasPendingVersion: true,
+    //     token: process.env.CONFIRM_TOKEN
+    // };
 
-    console.log(payload);
+    // console.log(payload);
 
-    let data = new FormData();
-    data.append("json", JSON.stringify(payload))
+    // let data = new FormData();
+    // data.append("json", JSON.stringify(payload))
     
 
-    let fetchData = {
-        method: 'POST',
-        body: data,
-    };
+    // let fetchData = {
+    //     method: 'POST',
+    //     body: data,
+    // };
 
-    console.log(fetchData);
+    // console.log(fetchData);
 
-    // fetch('http://www.flatfish.online:49162/check-pending', {method: 'POST', body: 'hasPendingVersion=true'});
-    fetch('http://www.flatfish.online:49162/check-pending', fetchData);
+    // // fetch('http://www.flatfish.online:49162/check-pending', {method: 'POST', body: 'hasPendingVersion=true'});
+    // fetch('http://www.flatfish.online:49162/check-pending', fetchData);
+
+
+
+
+    // var request = require('request');
+
+request.post(
+    'http://www.flatfish.online:49162/check-pending',
+    { json: { hasPendingVersion: true, token: process.env.CONFIRM_TOKEN } },
+    function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log(body);
+        }
+    }
+);
 
 
     // fetch('http://www.flatfish.online:49162/check-pending');
