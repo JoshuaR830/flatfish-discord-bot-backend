@@ -36,7 +36,7 @@ function checkPendingVersion(environment) {
 // Any branch can be tested
 function getListOfBranches(environment) {
     console.log("list for " + environment);
-    exec('git-config --global user-name', (err, stdout, stderr) => stdout)
+    exec('git-config --global user-name', (err, stdout, stderr) => [stdout])
     // return ['master', 'develop'];
 }
 
@@ -90,6 +90,8 @@ app.post("/list", (req, res) => {
 
     // Some test data
     let allowedList = getListOfBranches(env);
+
+    console.log("allowed: " + allowedList);
 
     request.post(
         'http://www.flatfish.online:49162/list',
