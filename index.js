@@ -40,7 +40,7 @@ async function getListOfBranches(environment) {
     exec('git branch -a', (err, stdout, stderr) => {
         console.log("Output: " + stdout);
         console.log("Output: " + stdout.split('\n'));
-        return stdout.split(' ');
+        return stdout.split('\n');
     });
     
     // return ['master', 'develop'];
@@ -91,7 +91,7 @@ function rejectCandidate(environment) {
 
 // This endpoint is hit when user asks for a list
 // Depending on the list depends on what is posted back
-app.post("/list", (req, res) => {
+app.post("/list", async (req, res) => {
     let env = req.body.environment;
 
     // Some test data
