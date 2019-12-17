@@ -60,7 +60,7 @@ app.post("/list", (req, res) => {
     let allowedList = getListOfBranches(env);
 
     request.post(
-        'http://www.flatfish.online:49162/check-pending',
+        'http://www.flatfish.online:49162/list',
         { json: { environment: env, list: allowedList, token: process.env.CONFIRM_TOKEN} },
         function (error, response, body) {
             if (!error && response.statusCode == 200) {
