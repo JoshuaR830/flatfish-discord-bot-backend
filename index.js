@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const request = require('request');
 const bodyParser = require('body-parser');
+const exec = require('child_process').exec;
 
 const app = express();
 
@@ -35,7 +36,8 @@ function checkPendingVersion(environment) {
 // Any branch can be tested
 function getListOfBranches(environment) {
     console.log("list for " + environment);
-    return ['master', 'develop'];
+    exec('git-config --global user-name', (err, stdout, stderr) => stdout)
+    // return ['master', 'develop'];
 }
 
 // This will do everything to setup the deployment candidate environment
