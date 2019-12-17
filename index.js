@@ -36,7 +36,7 @@ function checkPendingVersion(environment) {
 // Any branch can be tested
 function getListOfBranches(environment) {
     console.log("list for " + environment);
-    exec('git-config --global user-name', (err, stdout, stderr) => console.log("output:" + stdout));
+    exec('git branch -a', (err, stdout, stderr) => console.log("output:" + stdout));
     return ['master', 'develop'];
 }
 
