@@ -38,6 +38,8 @@ function getListOfBranches(environment) {
     console.log("list for " + environment);
     // exec('git branch -a', (err, stdout, stderr) => console.log("output:" + stdout.split(' ')));
     exec('git branch -a', (err, stdout, stderr) => {
+        console.log("Output: " + stdout);
+        console.log("Output: " + stdout.split(' '));
         return stdout.split(' ');
     });
     
