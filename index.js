@@ -15,26 +15,32 @@ var messageChannel;
 // You would always hope that the actual responses would be the other way around - at least in the ideal case
 
 function checkPendingVersions(environment) {
+    console.log("Check pending for " + environment);
     return true;
 }
 
 function isInDeployedEnvironment(branch) {
+    console.log("Has deployed " + branch + "successfully");
     return false;
 }
 
 function isInTestEnvironment(branch) {
+    console.log("Has tested " + branch + "successfully");
     return false;
 }
 
 function getListOfBranches(environment) {
+    console.log("list for " + environment);
     return ['master', 'develop'];
 }
 
 function deployToLive(project, branch) {
+    console.log("Deployed " + branch + " for " + project);
     return false;
 }
 
 function rejectCandidate(environment) {
+    console.log("Rejected " + environment + "environment");
     return false;
 }
 
