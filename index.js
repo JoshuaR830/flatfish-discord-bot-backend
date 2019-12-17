@@ -34,12 +34,12 @@ function checkPendingVersion(environment) {
 // This will list all of the branches that are candidates for the specified environment
 // Only branches up to date with master can be deployment candidates
 // Any branch can be tested
-function getListOfBranches(environment) {
+async function getListOfBranches(environment) {
     console.log("list for " + environment);
     // exec('git branch -a', (err, stdout, stderr) => console.log("output:" + stdout.split(' ')));
     exec('git branch -a', (err, stdout, stderr) => {
         console.log("Output: " + stdout);
-        console.log("Output: " + stdout.split(' '));
+        console.log("Output: " + stdout.split('\n'));
         return stdout.split(' ');
     });
     
@@ -95,7 +95,7 @@ app.post("/list", (req, res) => {
     let env = req.body.environment;
 
     // Some test data
-    let allowedList = getListOfBranches(env);
+    let allowedList = await getListOfBranches(env);
 
     console.log("allowed: " + allowedList);
 
