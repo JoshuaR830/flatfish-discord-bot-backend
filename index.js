@@ -36,8 +36,8 @@ function checkPendingVersion(environment) {
 // Any branch can be tested
 function getListOfBranches(environment) {
     console.log("list for " + environment);
-    exec('git-config --global user-name', (err, stdout, stderr) => [stdout])
-    // return ['master', 'develop'];
+    exec('git-config --global user-name', (err, stdout, stderr) => console.log(stdout));
+    return ['master', 'develop'];
 }
 
 // This will do everything to setup the deployment candidate environment
