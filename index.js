@@ -25,7 +25,7 @@ app.listen(8000, () => {
 // Possibly just hit the url - is it up? Is it a 500 error?
 // If request fails, there is nothing there
 // Return whether or not there is something there - true - there is
-function checkPendingVersions(environment) {
+function checkPendingVersion(environment) {
     console.log("Check pending for " + environment);
     return true;
 }
