@@ -37,9 +37,9 @@ function checkPendingVersion(environment) {
 function getListOfBranches(environment) {
     console.log("list for " + environment);
     // exec('git branch -a', (err, stdout, stderr) => console.log("output:" + stdout.split(' ')));
-    exec('git branch -a', (err, stdout, stderr)).then((err, stdout, stderr) => {
-        return stdout.split(' ')
-    })
+    exec('git branch -a', (err, stdout, stderr) => {
+        return stdout.split(' ');
+    });
     
     // return ['master', 'develop'];
 }
