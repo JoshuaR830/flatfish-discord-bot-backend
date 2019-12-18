@@ -35,9 +35,10 @@ function checkPendingVersion(environment) {
     return true;
 }
 
-var cmd = `cd ../
-cd flatfish-discord-bot
-git branch -a`
+// var cmd = `cd ../ 
+// cd flatfish-discord-bot
+//  git branch -a
+// `
 
 // This will list all of the branches that are candidates for the specified environment
 // Only branches up to date with master can be deployment candidates
@@ -45,8 +46,7 @@ git branch -a`
 async function getListOfBranches(environment) {
     console.log("list for " + environment);
     // exec('git branch -a', (err, stdout, stderr) => console.log("output:" + stdout.split(' ')));
-    
-    var branches = await exec(cmd);
+    var branches = await exec('cd ../flatfish-discord-bot && git branch -a', {cwd: '/home/user/discord-bot/flatfish-discord-bot-backend' });
     console.log("Output: " + branches.stdout.trim());
     console.log("Output: " + branches.stdout.trim().split('\n'));
     return branches.stdout.trim().split('\n');
