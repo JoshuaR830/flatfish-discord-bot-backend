@@ -41,7 +41,7 @@ function checkPendingVersion(environment) {
 async function getListOfBranches(environment) {
     console.log("list for " + environment);
     // exec('git branch -a', (err, stdout, stderr) => console.log("output:" + stdout.split(' ')));
-    var branches = await exec('git branch -a');
+    var branches = await exec('cd../flatfish-discord-bot && git branch -a');
     console.log("Output: " + branches.stdout.trim());
     console.log("Output: " + branches.stdout.trim().split('\n'));
     return branches.stdout.trim().split('\n');
