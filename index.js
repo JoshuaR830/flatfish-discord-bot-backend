@@ -42,9 +42,9 @@ async function getListOfBranches(environment) {
     console.log("list for " + environment);
     // exec('git branch -a', (err, stdout, stderr) => console.log("output:" + stdout.split(' ')));
     var branches = await exec('git branch -a');
-    console.log("Output: " + branches);
-    console.log("Output: " + branches.split('\n'));
-    return branches.split('\n');
+    console.log("Output: " + branches.stdout.trim());
+    console.log("Output: " + branches.stdout.trim().split('\n'));
+    return branches.stdout.trim().split('\n');
 };
     
     // return ['master', 'develop'];
