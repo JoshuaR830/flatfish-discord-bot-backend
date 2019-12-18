@@ -36,9 +36,9 @@ function checkPendingVersion(environment) {
 }
 
 var cmd = `cd ../ 
-// cd flatfish-discord-bot
-//  git branch -a
-// `
+cd flatfish-discord-bot
+git branch -a
+`
 
 // This will list all of the branches that are candidates for the specified environment
 // Only branches up to date with master can be deployment candidates
