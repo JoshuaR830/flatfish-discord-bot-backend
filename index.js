@@ -2,7 +2,11 @@ require('dotenv').config();
 const express = require('express');
 const request = require('request');
 const bodyParser = require('body-parser');
-const exec = require('child_process').exec;
+const {promisify} = require('util');
+const exec = promisify(require('child_process').exec);
+
+
+
 
 const app = express();
 
@@ -37,14 +41,14 @@ function checkPendingVersion(environment) {
 async function getListOfBranches(environment) {
     console.log("list for " + environment);
     // exec('git branch -a', (err, stdout, stderr) => console.log("output:" + stdout.split(' ')));
-    exec('git branch -a', (err, stdout, stderr) => {
-        console.log("Output: " + stdout);
-        console.log("Output: " + stdout.split('\n'));
-        return stdout.split('\n');
-    });
+    var branches = await exec('git branch -a');
+    console.log("Output: " + branches);
+    console.log("Output: " + branches.split('\n'));
+    return branches.split('\n');
+};
     
     // return ['master', 'develop'];
-}
+
 
 // This will do everything to setup the deployment candidate environment
 // Checkout correct project
