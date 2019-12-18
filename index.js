@@ -35,7 +35,7 @@ function checkPendingVersion(environment) {
     return true;
 }
 
-// var cmd = `cd ../ 
+var cmd = `cd ../ 
 // cd flatfish-discord-bot
 //  git branch -a
 // `
@@ -46,7 +46,7 @@ function checkPendingVersion(environment) {
 async function getListOfBranches(environment) {
     console.log("list for " + environment);
     // exec('git branch -a', (err, stdout, stderr) => console.log("output:" + stdout.split(' ')));
-    var branches = await exec('git branch -a', {cwd: '/home/user/discord-bot/flatfish-discord-bot' });
+    var branches = await exec(cmd);
     console.log("Output: " + branches.stdout.trim());
     console.log("Output: " + branches.stdout.trim().split('\n'));
     return branches.stdout.trim().split('\n');
